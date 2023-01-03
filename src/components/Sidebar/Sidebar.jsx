@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Sidebar.css";
 
-function Sidebar({ setMenuToggle, menuButtonRef }) {
+const Sidebar = ({ setMenuToggle, menuButtonRef }) => {
   const navigate = useNavigate();
   const menuRef = useRef(null);
 
@@ -59,6 +59,6 @@ function Sidebar({ setMenuToggle, menuButtonRef }) {
       </div>
     </div>
   );
-}
+};
 
 export default Sidebar;

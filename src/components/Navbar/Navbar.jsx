@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import "./Navbar.css";
 import Sidebar from "../Sidebar/Sidebar";
 
-function Navbar() {
+const Navbar = () => {
   const [toggle, setToggle] = useState(false);
   const menuButtonRef = useRef(null);
 
@@ -39,6 +39,6 @@ function Navbar() {
       )}
     </>
   );
-}
+};
 
 export default Navbar;

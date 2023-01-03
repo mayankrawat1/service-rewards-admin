@@ -1,7 +1,7 @@
 import "./Login.css";
 import { Link } from "react-router-dom";
 
-function Login() {
+const Login = () => {
   return (
     <div className="container">
       <div className="card">
@@ -17,6 +17,6 @@ function Login() {
       </div>
     </div>
   );
-}
+};
 
 export default Login;
