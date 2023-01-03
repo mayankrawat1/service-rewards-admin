@@ -43,17 +43,6 @@ const Sidebar = ({ setMenuToggle, menuButtonRef }) => {
               {/* <i className="fa-brands fa-slack me-2 ms-1"></i> */}
               Dashboard
             </button>
-            <button
-              type="button"
-              className="btn menuBtn rounded-0 dropdown-toggle text-start p-2 text-white"
-              onClick={() => {
-                navigate(`/about`);
-                setMenuToggle(false);
-              }}
-            >
-              {/* <i className="fa-brands fa-slack me-2 ms-1"></i> */}
-              About
-            </button>
           </>
         </div>
       </div>

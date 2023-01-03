@@ -1,0 +1,55 @@
+.head {
+  color: rgb(0, 133, 66);
+  background-color: white;
+}
+
+.body {
+  background-color: rgb(233, 231, 231);
+}
+.white {
+  background-color: white;
+}
+.gray {
+  background-color: rgb(233, 231, 231);
+}
+
+.check {
+  accent-color: rgb(0, 133, 66);
+}
+.orange,
+.green {
+  color: white;
+}
+
+.edit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+  color: rgb(72, 146, 248);
+  border: none;
+  background-color: #fff;
+  border-radius: 5px;
+  min-width: 30px;
+  height: 30px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+.delete {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 4px;
+  color: rgb(255, 65, 65);
+  border: none;
+  background-color: #fff;
+  border-radius: 5px;
+  min-width: 30px;
+  height: 30px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
