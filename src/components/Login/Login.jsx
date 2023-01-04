@@ -10,8 +10,8 @@ const Login = () => {
           <p className="text">Admin Dashboard</p>
         </div>
         <div className="button_container">
-          <Link to="/dash">
-            <button className="btn">LOGIN</button>
+          <Link to="/reward-point">
+            <button className="loginButton">LOGIN</button>
           </Link>
         </div>
       </div>

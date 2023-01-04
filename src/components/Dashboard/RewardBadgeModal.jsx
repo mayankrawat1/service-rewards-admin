@@ -1,7 +1,7 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
-function RewardPointModal({ show, handleClose }) {
+function RewardBadgeModal({ show, handleClose }) {
   return (
     <>
       <Modal
@@ -11,7 +11,7 @@ function RewardPointModal({ show, handleClose }) {
         keyboard={false}
       >
         <Modal.Header closeButton>
-          <Modal.Title>Modal point</Modal.Title>
+          <Modal.Title>Modal badge</Modal.Title>
         </Modal.Header>
         <Modal.Body></Modal.Body>
         <Modal.Footer>
@@ -25,4 +25,4 @@ function RewardPointModal({ show, handleClose }) {
   );
 }
 
-export default RewardPointModal;
+export default RewardBadgeModal;

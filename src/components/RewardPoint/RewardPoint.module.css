@@ -21,6 +21,15 @@
   color: white;
 }
 
+.addRewardPointDataButton {
+  outline: none;
+  background-color: #008542;
+  padding: 10px;
+  color: #fff;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
 .edit {
   display: flex;
   justify-content: center;
