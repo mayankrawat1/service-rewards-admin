@@ -36,12 +36,23 @@ const Sidebar = ({ setMenuToggle, menuButtonRef }) => {
               type="button"
               className="btn menuBtn rounded-0 dropdown-toggle text-start p-2 text-white"
               onClick={() => {
-                navigate(`/dash`);
+                navigate(`/reward-point`);
                 setMenuToggle(false);
               }}
             >
               {/* <i className="fa-brands fa-slack me-2 ms-1"></i> */}
-              Dashboard
+              Reward-Point
+            </button>
+            <button
+              type="button"
+              className="btn menuBtn rounded-0 dropdown-toggle text-start p-2 text-white"
+              onClick={() => {
+                navigate(`/reward-badge`);
+                setMenuToggle(false);
+              }}
+            >
+              {/* <i className="fa-brands fa-slack me-2 ms-1"></i> */}
+              Reward-Badge
             </button>
           </>
         </div>

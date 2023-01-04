@@ -2,8 +2,9 @@ import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Login from "./components/Login/Login";
 import Navbar from "./components/Navbar/Navbar";
-import Dashboard from "./components/Dashboard/Dashboard";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
+import RewardPoint from "./components/RewardPoint/RewardPoint";
+import RewardBadge from "./components/RewardBadge/RewardBadge";
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/dash" element={<Dashboard />} />
+          <Route path="/reward-point" element={<RewardPoint />} />
+          <Route path="/reward-badge" element={<RewardBadge />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
