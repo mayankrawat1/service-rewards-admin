@@ -2,18 +2,36 @@ import { MdEdit, MdDelete } from "react-icons/md";
 import Table from "react-bootstrap/Table";
 import styles from "./RewardPoint.module.css";
 import RewardPointModal from "../Dashboard/RewardPointModal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
 
 const RewardPoint = () => {
+  const [newRewardPointCreated, setNewRewardPointCreated] = useState(false);
+  const [allRecord, setAllRecord] = useState([]);
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
     setShow(false);
   };
 
+  useEffect(() => {
+    const getData = async () => {
+      const result = await axios.get(
+        "http://localhost:5000/service-reward/all-reward-point"
+      );
+      console.log(result.data);
+      setAllRecord(result.data);
+    };
+    getData();
+  }, [newRewardPointCreated]);
+
   return (
     <>
-      <RewardPointModal show={show} handleClose={handleClose} />
+      <RewardPointModal
+        show={show}
+        handleClose={handleClose}
+        fetchRewardPoint={(e) => setNewRewardPointCreated(e)}
+      />
       <div>
         <div
           style={{
@@ -41,28 +59,32 @@ const RewardPoint = () => {
               </tr>
             </thead>
             <tbody className={styles.body}>
-              <tr>
-                <td>1</td>
-                <td>vip-record</td>
-                <td>50</td>
-                <td>
-                  <div className={styles.actions}>
-                    <button
-                      className={styles.edit}
-                      //   onClick={() => handleEdit(info)}
-                    >
-                      <MdEdit />
-                    </button>
+              {allRecord.map((record, index) => {
+                return (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{record.eventName}</td>
+                    <td>{record.eventPoint}</td>
+                    <td>
+                      <div className={styles.actions}>
+                        <button
+                          className={styles.edit}
+                          //   onClick={() => handleEdit(info)}
+                        >
+                          <MdEdit />
+                        </button>
 
-                    <button
-                      className={styles.delete}
-                      //   onClick={() => handleDelete(info._id)}
-                    >
-                      <MdDelete />
-                    </button>
-                  </div>
-                </td>
-              </tr>
+                        <button
+                          className={styles.delete}
+                          //   onClick={() => handleDelete(info._id)}
+                        >
+                          <MdDelete />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </Table>
         </div>

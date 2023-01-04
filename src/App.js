@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import ErrorPage from "./components/ErrorPage/ErrorPage";
 import RewardPoint from "./components/RewardPoint/RewardPoint";
 import RewardBadge from "./components/RewardBadge/RewardBadge";
+import Home from "./components/Home/Home";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Login />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/reward-point" element={<RewardPoint />} />
           <Route path="/reward-badge" element={<RewardBadge />} />
           <Route path="*" element={<ErrorPage />} />

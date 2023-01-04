@@ -7,18 +7,7 @@
 }
 .menuBtn {
   background-color: #404040;
-}
-/* .sideMenu {
-    position: fixed;
-    overflow: auto;
-    background-color: #272727;
-    margin: 0px;
-    transform: translate3d(230px, 0px, 0px);
-    height: 100vh;
-  } */
-.menuBtn:hover {
-  color: white;
-  background-color: #404040;
+  border: none;
 }
 .flex-c {
   display: flex;

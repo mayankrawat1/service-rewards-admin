@@ -1,0 +1,43 @@
+.container {
+  height: 93vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainHeading {
+  font-size: 35px;
+  color: #008542;
+  font-weight: 600;
+}
+
+.button_container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.pointButton {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #008542;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 30px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.badgeButton {
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #008542;
+  border: none;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 30px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
