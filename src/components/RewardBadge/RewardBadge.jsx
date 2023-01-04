@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { MdEdit, MdDelete } from "react-icons/md";
+import { BiPlusMedical } from "react-icons/bi";
 import Table from "react-bootstrap/Table";
 import styles from "./RewardBadge.module.css";
 import RewardBadgeModal from "../Dashboard/RewardBadgeModal";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const RewardBadge = () => {
   const [newRewardBadgeCreated, setNewRewardBadgeCreated] = useState(false);
@@ -24,6 +26,20 @@ const RewardBadge = () => {
     };
     getData();
   }, [newRewardBadgeCreated]);
+
+  const handleDeleteBadgeData = async (id) => {
+    try {
+      const { data } = await axios.delete(
+        `http://localhost:5000/service-reward/delete-reward-badge/${id}`
+      );
+      data._id &&
+        setAllBadgeRecord(allBadgeRecord.filter(({ _id }) => _id !== data._id));
+      toast.success("Deleted Successfully");
+      console.log("delete");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <>
@@ -46,7 +62,7 @@ const RewardBadge = () => {
             className={styles.addRewardBadgeDataButton}
             onClick={() => setShow(true)}
           >
-            Add
+            <BiPlusMedical />
           </button>
         </div>
         <div>
@@ -77,7 +93,7 @@ const RewardBadge = () => {
 
                         <button
                           className={styles.delete}
-                          //   onClick={() => handleDelete(info._id)}
+                          onClick={() => handleDeleteBadgeData(record._id)}
                         >
                           <MdDelete />
                         </button>

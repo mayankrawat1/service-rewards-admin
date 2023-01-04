@@ -3,6 +3,7 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import { toast } from "react-toastify";
 
 function RewardPointModal({ show, handleClose, fetchRewardPoint }) {
   const [rewardPointData, setRewardPointData] = useState({
@@ -23,6 +24,7 @@ function RewardPointModal({ show, handleClose, fetchRewardPoint }) {
       { ...rewardPointData }
     );
     fetchRewardPoint(true);
+    toast.success("Added successfully");
     console.log(result);
 
     rewardPointData.eventName = "";

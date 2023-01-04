@@ -3,6 +3,7 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import { toast } from "react-toastify";
 
 function RewardBadgeModal({ show, handleClose, fetchRewardBadge }) {
   const [rewardBadgeData, setRewardBadgeData] = useState({
@@ -24,6 +25,7 @@ function RewardBadgeModal({ show, handleClose, fetchRewardBadge }) {
       { ...rewardBadgeData }
     );
     fetchRewardBadge(true);
+    toast.success("Added successfully");
     console.log(result);
 
     rewardBadgeData.badgeNo = 0;

@@ -1,9 +1,11 @@
 import { MdEdit, MdDelete } from "react-icons/md";
+import { BiPlusMedical } from "react-icons/bi";
 import Table from "react-bootstrap/Table";
 import styles from "./RewardPoint.module.css";
 import RewardPointModal from "../Dashboard/RewardPointModal";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const RewardPoint = () => {
   const [newRewardPointCreated, setNewRewardPointCreated] = useState(false);
@@ -25,6 +27,19 @@ const RewardPoint = () => {
     getData();
   }, [newRewardPointCreated]);
 
+  const handleDeletePointData = async (id) => {
+    try {
+      const { data } = await axios.delete(
+        `http://localhost:5000/service-reward/delete-reward-point/${id}`
+      );
+      data._id && setAllRecord(allRecord.filter(({ _id }) => _id !== data._id));
+      toast.success("Deleted Successfully");
+      console.log("delete");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <>
       <RewardPointModal
@@ -45,7 +60,7 @@ const RewardPoint = () => {
             className={styles.addRewardPointDataButton}
             onClick={() => setShow(true)}
           >
-            Add
+            <BiPlusMedical />
           </button>
         </div>
         <div>
@@ -76,7 +91,7 @@ const RewardPoint = () => {
 
                         <button
                           className={styles.delete}
-                          //   onClick={() => handleDelete(info._id)}
+                          onClick={() => handleDeletePointData(record._id)}
                         >
                           <MdDelete />
                         </button>

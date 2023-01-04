@@ -1,5 +1,10 @@
 import "./Login.css";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+
+const loginSuccessful = () => {
+  toast.success("Login Successfully");
+};
 
 const Login = () => {
   return (
@@ -11,7 +16,9 @@ const Login = () => {
         </div>
         <div className="button_container">
           <Link to="/home">
-            <button className="loginButton">LOGIN</button>
+            <button className="loginButton" onClick={loginSuccessful}>
+              LOGIN
+            </button>
           </Link>
         </div>
       </div>
