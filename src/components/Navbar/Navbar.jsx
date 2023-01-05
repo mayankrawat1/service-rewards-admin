@@ -13,6 +13,8 @@ const Navbar = () => {
     setToggle((p) => !p);
   };
 
+  console.log(localStorage.getItem("login"));
+
   return (
     <>
       <nav className="navbar navbar-expand-lg navBar">
@@ -44,7 +46,10 @@ const Navbar = () => {
                 color: "#fff",
                 fontSize: "25px",
               }}
-              onClick={() => toast.success("User logout successfully")}
+              onClick={
+                (() => toast.success("User logout successfully"),
+                localStorage.removeItem("login"))
+              }
             >
               <BsFillArrowLeftCircleFill />
             </Link>

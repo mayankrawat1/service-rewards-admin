@@ -6,6 +6,7 @@ import styles from "./RewardBadge.module.css";
 import RewardBadgeModal from "../Dashboard/RewardBadgeModal";
 import axios from "axios";
 import { toast } from "react-toastify";
+import port from "../../config";
 
 const RewardBadge = () => {
   const [newRewardBadgeCreated, setNewRewardBadgeCreated] = useState(false);
@@ -19,9 +20,7 @@ const RewardBadge = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const result = await axios.get(
-        "http://localhost:5000/service-reward/all-reward-badge"
-      );
+      const result = await axios.get(`${port}/service-reward/all-reward-badge`);
       console.log(result.data);
       setAllBadgeRecord(result.data);
     };
@@ -31,7 +30,7 @@ const RewardBadge = () => {
   const handleDeleteBadgeData = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:5000/service-reward/delete-reward-badge/${id}`
+        `${port}/service-reward/delete-reward-badge/${id}`
       );
       data._id &&
         setAllBadgeRecord(allBadgeRecord.filter(({ _id }) => _id !== data._id));

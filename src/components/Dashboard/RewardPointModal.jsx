@@ -5,6 +5,7 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
+import port from "../../config";
 
 function RewardPointModal({
   show,
@@ -37,7 +38,7 @@ function RewardPointModal({
       e.preventDefault();
       if (updatePoint._id) {
         const result = await axios.put(
-          `http://localhost:5000/service-reward/update-reward-point/${updatePoint._id}`,
+          `${port}/service-reward/update-reward-point/${updatePoint._id}`,
           { ...rewardPointData }
         );
         fetchRewardPoint(true);
@@ -45,7 +46,7 @@ function RewardPointModal({
         console.log(result);
       } else {
         const result = await axios.post(
-          "http://localhost:5000/service-reward/create-reward-point",
+          `${port}/service-reward/create-reward-point`,
           { ...rewardPointData }
         );
         fetchRewardPoint(true);
@@ -81,6 +82,7 @@ function RewardPointModal({
                 name="eventName"
                 value={rewardPointData.eventName}
                 onChange={handlePointData}
+                required={true}
               />
             </Form.Group>
 
@@ -92,6 +94,7 @@ function RewardPointModal({
                 name="eventPoint"
                 value={rewardPointData.eventPoint}
                 onChange={handlePointData}
+                required={true}
               />
             </Form.Group>
             <Button

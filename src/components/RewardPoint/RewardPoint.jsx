@@ -6,12 +6,13 @@ import RewardPointModal from "../Dashboard/RewardPointModal";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
+import port from "../../config";
 
 const RewardPoint = () => {
   const [newRewardPointCreated, setNewRewardPointCreated] = useState(false);
   const [allRecord, setAllRecord] = useState([]);
   const [show, setShow] = useState(false);
-  const [updatePoint,setUpdatePoint]=useState({})
+  const [updatePoint, setUpdatePoint] = useState({});
 
   const handleClose = () => {
     setShow(false);
@@ -19,9 +20,7 @@ const RewardPoint = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const result = await axios.get(
-        "http://localhost:5000/service-reward/all-reward-point"
-      );
+      const result = await axios.get(`${port}/service-reward/all-reward-point`);
       console.log(result.data);
       setAllRecord(result.data);
     };
@@ -31,7 +30,7 @@ const RewardPoint = () => {
   const handleDeletePointData = async (id) => {
     try {
       const { data } = await axios.delete(
-        `http://localhost:5000/service-reward/delete-reward-point/${id}`
+        `${port}/service-reward/delete-reward-point/${id}`
       );
       data._id && setAllRecord(allRecord.filter(({ _id }) => _id !== data._id));
       toast.success("Deleted Successfully");
@@ -41,14 +40,14 @@ const RewardPoint = () => {
     }
   };
 
-  const handleUpdatePointData=async(data)=>{
+  const handleUpdatePointData = async (data) => {
     try {
       setShow(true);
-      setUpdatePoint(data)
+      setUpdatePoint(data);
     } catch (error) {
-      console.log(error.message)
+      console.log(error.message);
     }
-  }
+  };
 
   return (
     <>
@@ -95,7 +94,7 @@ const RewardPoint = () => {
                       <div className={styles.actions}>
                         <button
                           className={styles.edit}
-                            onClick={() => handleUpdatePointData(record)}
+                          onClick={() => handleUpdatePointData(record)}
                         >
                           <MdEdit />
                         </button>

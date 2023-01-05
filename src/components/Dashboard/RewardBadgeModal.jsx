@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
+import port from "../../config";
 
 function RewardBadgeModal({
   show,
@@ -38,7 +39,7 @@ function RewardBadgeModal({
       e.preventDefault();
       if (updateBadge._id) {
         const result = await axios.put(
-          `http://localhost:5000/service-reward/update-reward-badge/${updateBadge._id}`,
+          `${port}/service-reward/update-reward-badge/${updateBadge._id}`,
           { ...rewardBadgeData }
         );
         fetchRewardBadge(true);
@@ -46,7 +47,7 @@ function RewardBadgeModal({
         console.log(result);
       } else {
         const result = await axios.post(
-          "http://localhost:5000/service-reward/create-reward-badge",
+          `${port}/service-reward/create-reward-badge`,
           { ...rewardBadgeData }
         );
         fetchRewardBadge(true);
@@ -83,6 +84,7 @@ function RewardBadgeModal({
                 name="badgeNo"
                 value={rewardBadgeData.badgeNo}
                 onChange={handleBadgeData}
+                required={true}
                 disabled={updateBadge._id ? true : false}
               />
             </Form.Group>
@@ -94,6 +96,7 @@ function RewardBadgeModal({
                 name="badgeName"
                 value={rewardBadgeData.badgeName}
                 onChange={handleBadgeData}
+                required={true}
               />
             </Form.Group>
 
@@ -105,6 +108,7 @@ function RewardBadgeModal({
                 name="badgePoint"
                 value={rewardBadgeData.badgePoint}
                 onChange={handleBadgeData}
+                required={true}
               />
             </Form.Group>
             <Button

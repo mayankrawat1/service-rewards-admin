@@ -24,12 +24,35 @@ function App() {
         pauseOnHover
       />
       <BrowserRouter>
-        <Navbar />
         <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/reward-point" element={<RewardPoint />} />
-          <Route path="/reward-badge" element={<RewardBadge />} />
+          <Route
+            path="/home"
+            element={
+              <>
+                <Navbar />
+                <Home />
+              </>
+            }
+          />
+          <Route
+            path="/reward-point"
+            element={
+              <>
+                <Navbar />
+                <RewardPoint />
+              </>
+            }
+          />
+          <Route
+            path="/reward-badge"
+            element={
+              <>
+                <Navbar />
+                <RewardBadge />
+              </>
+            }
+          />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>
