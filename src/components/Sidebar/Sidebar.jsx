@@ -55,18 +55,6 @@ const Sidebar = ({ setMenuToggle, menuButtonRef }) => {
               {/* <i className="fa-brands fa-slack me-2 ms-1"></i> */}
               Reward-Badge
             </button>
-            <button
-              type="button"
-              className="btn menuBtn rounded-0 dropdown-toggle text-start p-2 text-white"
-              onClick={() => {
-                navigate(`/`);
-                setMenuToggle(false);
-                toast.success("User logout successfully");
-              }}
-            >
-              {/* <i className="fa-brands fa-slack me-2 ms-1"></i> */}
-              Logout
-            </button>
           </>
         </div>
       </div>

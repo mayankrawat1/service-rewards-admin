@@ -1,6 +1,9 @@
 import React, { useState, useRef } from "react";
 import "./Navbar.css";
 import Sidebar from "../Sidebar/Sidebar";
+import { BsFillArrowLeftCircleFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [toggle, setToggle] = useState(false);
@@ -27,9 +30,25 @@ const Navbar = () => {
             {/* <i className="fa-solid fa-bars me-2 fa-xl"></i> */}
             MENU
           </div>
-          {/* <div className="flex-c">
-            <h5 className="p-0 m-0">Admin Dashboard</h5>
-          </div> */}
+          <div
+            style={{
+              cursor: "pointer",
+              width: "max-content",
+              fontWeight: "bold",
+              marginRight: "20px",
+            }}
+          >
+            <Link
+              to={"/"}
+              style={{
+                color: "#fff",
+                fontSize: "25px",
+              }}
+              onClick={() => toast.success("User logout successfully")}
+            >
+              <BsFillArrowLeftCircleFill />
+            </Link>
+          </div>
         </div>
       </nav>
       {toggle ? (
