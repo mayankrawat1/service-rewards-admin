@@ -1,16 +1,31 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
 
-function RewardBadgeModal({ show, handleClose, fetchRewardBadge }) {
+function RewardBadgeModal({
+  show,
+  handleClose,
+  updateBadge,
+  fetchRewardBadge,
+}) {
   const [rewardBadgeData, setRewardBadgeData] = useState({
     badgeNo: 0,
     badgeName: "",
     badgePoint: 0,
   });
+
+  useEffect(() => {
+    if (updateBadge) {
+      setRewardBadgeData({
+        badgeNo: updateBadge.badgeNo,
+        badgeName: updateBadge.badgeName,
+        badgePoint: updateBadge.badgePoint,
+      });
+    }
+  }, [updateBadge]);
 
   const handleBadgeData = (e) => {
     const name = e.target.name;
@@ -19,18 +34,32 @@ function RewardBadgeModal({ show, handleClose, fetchRewardBadge }) {
   };
 
   const handleBadgeDataSubmit = async (e) => {
-    e.preventDefault();
-    const result = await axios.post(
-      "http://localhost:5000/service-reward/create-reward-badge",
-      { ...rewardBadgeData }
-    );
-    fetchRewardBadge(true);
-    toast.success("Added successfully");
-    console.log(result);
+    try {
+      e.preventDefault();
+      if (updateBadge._id) {
+        const result = await axios.put(
+          `http://localhost:5000/service-reward/update-reward-badge/${updateBadge._id}`,
+          { ...rewardBadgeData }
+        );
+        fetchRewardBadge(true);
+        toast.success("Added successfully");
+        console.log(result);
+      } else {
+        const result = await axios.post(
+          "http://localhost:5000/service-reward/create-reward-badge",
+          { ...rewardBadgeData }
+        );
+        fetchRewardBadge(true);
+        toast.success("Added successfully");
+        console.log(result);
 
-    rewardBadgeData.badgeNo = 0;
-    rewardBadgeData.badgeName = "";
-    rewardBadgeData.badgePoint = 0;
+        rewardBadgeData.badgeNo = 0;
+        rewardBadgeData.badgeName = "";
+        rewardBadgeData.badgePoint = 0;
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (
@@ -54,6 +83,7 @@ function RewardBadgeModal({ show, handleClose, fetchRewardBadge }) {
                 name="badgeNo"
                 value={rewardBadgeData.badgeNo}
                 onChange={handleBadgeData}
+                disabled={updateBadge._id ? true : false}
               />
             </Form.Group>
             <Form.Group className="mb-3">

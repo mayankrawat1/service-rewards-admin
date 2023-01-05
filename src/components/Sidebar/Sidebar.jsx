@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 import "./Sidebar.css";
 
 const Sidebar = ({ setMenuToggle, menuButtonRef }) => {
@@ -60,6 +61,7 @@ const Sidebar = ({ setMenuToggle, menuButtonRef }) => {
               onClick={() => {
                 navigate(`/`);
                 setMenuToggle(false);
+                toast.success("User logout successfully");
               }}
             >
               {/* <i className="fa-brands fa-slack me-2 ms-1"></i> */}

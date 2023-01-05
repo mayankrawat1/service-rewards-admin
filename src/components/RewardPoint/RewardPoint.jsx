@@ -11,6 +11,7 @@ const RewardPoint = () => {
   const [newRewardPointCreated, setNewRewardPointCreated] = useState(false);
   const [allRecord, setAllRecord] = useState([]);
   const [show, setShow] = useState(false);
+  const [updatePoint,setUpdatePoint]=useState({})
 
   const handleClose = () => {
     setShow(false);
@@ -40,12 +41,22 @@ const RewardPoint = () => {
     }
   };
 
+  const handleUpdatePointData=async(data)=>{
+    try {
+      setShow(true);
+      setUpdatePoint(data)
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
   return (
     <>
       <RewardPointModal
         show={show}
         handleClose={handleClose}
         fetchRewardPoint={(e) => setNewRewardPointCreated(e)}
+        updatePoint={updatePoint}
       />
       <div>
         <div
@@ -84,7 +95,7 @@ const RewardPoint = () => {
                       <div className={styles.actions}>
                         <button
                           className={styles.edit}
-                          //   onClick={() => handleEdit(info)}
+                            onClick={() => handleUpdatePointData(record)}
                         >
                           <MdEdit />
                         </button>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const loginSuccessful = () => {
-  toast.success("Login Successfully");
+  toast.success("User login Successfully");
 };
 
 const Login = () => {
@@ -11,7 +11,7 @@ const Login = () => {
     <div className="container">
       <div className="card">
         <div className="inner-card">
-          <img className="img" src="" alt="logo" />
+          <img className="img" src={"./Tab.png"} alt="logo" />
           <p className="text">Admin Dashboard</p>
         </div>
         <div className="button_container">

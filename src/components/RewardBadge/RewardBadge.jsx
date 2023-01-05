@@ -11,6 +11,7 @@ const RewardBadge = () => {
   const [newRewardBadgeCreated, setNewRewardBadgeCreated] = useState(false);
   const [allBadgeRecord, setAllBadgeRecord] = useState([]);
   const [show, setShow] = useState(false);
+  const [updateBadge, setUpdateBadge] = useState({});
 
   const handleClose = () => {
     setShow(false);
@@ -41,12 +42,22 @@ const RewardBadge = () => {
     }
   };
 
+  const handleUpdateBadgeData = async (data) => {
+    try {
+      setShow(true);
+      setUpdateBadge(data);
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
   return (
     <>
       <RewardBadgeModal
         show={show}
         handleClose={handleClose}
         fetchRewardBadge={(e) => setNewRewardBadgeCreated(e)}
+        updateBadge={updateBadge}
       />
       <div>
         <div
@@ -86,7 +97,7 @@ const RewardBadge = () => {
                       <div className={styles.actions}>
                         <button
                           className={styles.edit}
-                          //   onClick={() => handleEdit(info)}
+                          onClick={() => handleUpdateBadgeData(record)}
                         >
                           <MdEdit />
                         </button>
