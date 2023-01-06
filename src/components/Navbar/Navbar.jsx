@@ -13,8 +13,6 @@ const Navbar = () => {
     setToggle((p) => !p);
   };
 
-  console.log(localStorage.getItem("login"));
-
   return (
     <>
       <nav className="navbar navbar-expand-lg navBar">

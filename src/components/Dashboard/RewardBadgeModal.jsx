@@ -44,7 +44,6 @@ function RewardBadgeModal({
         );
         fetchRewardBadge(true);
         toast.success("Added successfully");
-        console.log(result);
       } else {
         const result = await axios.post(
           `${port}/service-reward/create-reward-badge`,
@@ -52,7 +51,6 @@ function RewardBadgeModal({
         );
         fetchRewardBadge(true);
         toast.success("Added successfully");
-        console.log(result);
 
         rewardBadgeData.badgeNo = 0;
         rewardBadgeData.badgeName = "";

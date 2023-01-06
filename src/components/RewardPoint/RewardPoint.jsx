@@ -21,7 +21,6 @@ const RewardPoint = () => {
   useEffect(() => {
     const getData = async () => {
       const result = await axios.get(`${port}/service-reward/all-reward-point`);
-      console.log(result.data);
       setAllRecord(result.data);
     };
     getData();
@@ -34,7 +33,6 @@ const RewardPoint = () => {
       );
       data._id && setAllRecord(allRecord.filter(({ _id }) => _id !== data._id));
       toast.success("Deleted Successfully");
-      console.log("delete");
     } catch (error) {
       console.log(error.message);
     }

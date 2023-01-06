@@ -43,7 +43,6 @@ function RewardPointModal({
         );
         fetchRewardPoint(true);
         toast.success("Updated successfully");
-        console.log(result);
       } else {
         const result = await axios.post(
           `${port}/service-reward/create-reward-point`,
@@ -51,7 +50,6 @@ function RewardPointModal({
         );
         fetchRewardPoint(true);
         toast.success("Added successfully");
-        console.log(result);
 
         rewardPointData.eventName = "";
         rewardPointData.eventPoint = 0;

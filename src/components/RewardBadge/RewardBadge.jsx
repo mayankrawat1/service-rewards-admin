@@ -21,7 +21,6 @@ const RewardBadge = () => {
   useEffect(() => {
     const getData = async () => {
       const result = await axios.get(`${port}/service-reward/all-reward-badge`);
-      console.log(result.data);
       setAllBadgeRecord(result.data);
     };
     getData();
@@ -35,7 +34,6 @@ const RewardBadge = () => {
       data._id &&
         setAllBadgeRecord(allBadgeRecord.filter(({ _id }) => _id !== data._id));
       toast.success("Deleted Successfully");
-      console.log("delete");
     } catch (error) {
       console.log(error.message);
     }
