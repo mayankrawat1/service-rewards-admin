@@ -42,7 +42,7 @@ const Navbar = () => {
               to={"/"}
               style={{
                 color: "#fff",
-                fontSize: "25px",
+                fontSize: "17px",
               }}
               onClick={
                 (() => toast.success("User logout successfully"),
