@@ -15,7 +15,7 @@ function RewardPointModal({
 }) {
   const [rewardPointData, setRewardPointData] = useState({
     eventName: "",
-    eventPoint: 0,
+    eventPoint: null,
   });
 
   useEffect(() => {
@@ -52,10 +52,10 @@ function RewardPointModal({
         toast.success("Added successfully");
 
         rewardPointData.eventName = "";
-        rewardPointData.eventPoint = 0;
+        rewardPointData.eventPoint = null;
       }
     } catch (error) {
-      console.log(error.message);
+      toast.error(error?.response?.data?.message || error);
     }
   };
 

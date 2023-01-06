@@ -13,9 +13,9 @@ function RewardBadgeModal({
   fetchRewardBadge,
 }) {
   const [rewardBadgeData, setRewardBadgeData] = useState({
-    badgeNo: 0,
+    badgeNo: null,
     badgeName: "",
-    badgePoint: 0,
+    badgePoint: null,
   });
 
   useEffect(() => {
@@ -52,12 +52,12 @@ function RewardBadgeModal({
         fetchRewardBadge(true);
         toast.success("Added successfully");
 
-        rewardBadgeData.badgeNo = 0;
+        rewardBadgeData.badgeNo = null;
         rewardBadgeData.badgeName = "";
-        rewardBadgeData.badgePoint = 0;
+        rewardBadgeData.badgePoint = null;
       }
     } catch (error) {
-      console.log(error.message);
+      toast.error(error?.response?.data?.message || error);
     }
   };
 

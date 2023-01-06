@@ -22,6 +22,7 @@ const RewardBadge = () => {
     const getData = async () => {
       const result = await axios.get(`${port}/service-reward/all-reward-badge`);
       setAllBadgeRecord(result.data);
+      setNewRewardBadgeCreated(false);
     };
     getData();
   }, [newRewardBadgeCreated]);
@@ -35,7 +36,7 @@ const RewardBadge = () => {
         setAllBadgeRecord(allBadgeRecord.filter(({ _id }) => _id !== data._id));
       toast.success("Deleted Successfully");
     } catch (error) {
-      console.log(error.message);
+      toast.error(error?.response?.data?.message || error);
     }
   };
 
