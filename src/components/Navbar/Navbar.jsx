@@ -44,10 +44,7 @@ const Navbar = () => {
                 color: "#fff",
                 fontSize: "17px",
               }}
-              onClick={
-                (() => toast.success("User logout successfully"),
-                localStorage.removeItem("login"))
-              }
+              onClick={() => toast.success("User logout successfully")}
             >
               <BsFillArrowLeftCircleFill />
             </Link>
